@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TodoViewController.swift
 //  RxTodoList
 //
 //  Created by 김윤우 on 8/5/24.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class TodoViewController: BaseViewController {
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+       
     }
 
 
