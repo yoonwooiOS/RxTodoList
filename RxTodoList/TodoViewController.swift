@@ -76,8 +76,8 @@ final class TodoViewController: BaseViewController {
             .bind(to: tableView.rx.items(cellIdentifier: TodoTableViewCell.identifier, cellType: TodoTableViewCell.self)) {
                 (row, element, cell ) in
                 var data = element
-                print(row, element, cell)
-                
+                print(element,"2312312312312")
+                print(data,"!!!!!")
                 cell.checkButton.rx.tap
                     .bind(with: self) { owner, value in
 //                        print("checkButtonTaped")
@@ -98,15 +98,6 @@ final class TodoViewController: BaseViewController {
                 cell.setUpCell(data: element)
             }
             .disposed(by: disposeBag)
-        
-        self.todoAddButton.rx.tap
-            .withLatestFrom(self.textField.rx.text.orEmpty )
-            .bind(with: self) { owner, value in
-                var currentList = owner.list.value
-                currentList.append(Todo(name: value, checkState: false, likeState: false))
-                owner.list.accept(currentList)
-            }
-            .disposed(by: disposeBag)
         self.textField.rx.text.orEmpty
             .bind(with: self) { owner, value in
                 let result = value.isEmpty ? owner.data : owner.data.filter { $0.name.contains(value)}
@@ -114,6 +105,15 @@ final class TodoViewController: BaseViewController {
                 owner.list.accept(result)
             }
             .disposed(by: disposeBag)
+        
+        self.todoAddButton.rx.tap
+            .withLatestFrom(self.textField.rx.text.orEmpty )
+            .bind(with: self) { owner, value in
+                owner.data.insert(Todo(name: value, checkState: false, likeState: false), at: 0)
+                owner.list.accept(owner.data)
+            }
+            .disposed(by: disposeBag)
+        
     }
 }
 
