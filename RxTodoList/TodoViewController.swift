@@ -44,6 +44,7 @@ final class TodoViewController: BaseViewController {
         Todo(name: "아이패드 케이스 최저가 알아보기", checkState: false, likeState: false)
     ]
     lazy var list = BehaviorRelay(value:data)
+    let viewModel = TodoViewModel()
     let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,48 +73,38 @@ final class TodoViewController: BaseViewController {
         navigationItem.title = "쇼핑"
     }
     private func bind() {
-        list
+        
+        let cellCheckButtonTapped = PublishRelay<Int>()
+        let cellLikeButtonTapped = PublishRelay<Int>()
+        let input = TodoViewModel.Input( cellCheckButtonTapped: cellCheckButtonTapped, cellLikeButtonTapped: cellLikeButtonTapped, addTodo: self.todoAddButton.rx.tap
+            .withLatestFrom(self.textField.rx.text.orEmpty ))
+        let output = viewModel.transform(input: input)
+        
+        output.TodoList
             .bind(to: tableView.rx.items(cellIdentifier: TodoTableViewCell.identifier, cellType: TodoTableViewCell.self)) {
-                (row, element, cell ) in
+                (row, element, cell ) in // let = row, let = element, let = cell -> 왜 let으로 선언되는지 알아보기
                 var data = element
                 print(element,"2312312312312")
                 print(data,"!!!!!")
+                cell.setUpCell(data: data)
                 cell.checkButton.rx.tap
-                    .bind(with: self) { owner, value in
-//                        print("checkButtonTaped")
-                        data.checkState.toggle()
-                        let checkButtonImage = data.checkState ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square")
-                        cell.checkButton.setImage(checkButtonImage, for: .normal)
-                        print(data.checkState)
-                        print(data)
-                    }
-                    .disposed(by: self.disposeBag)
+                    .map {row}
+                    .bind(to: cellCheckButtonTapped)
+                    .disposed(by: cell.disposeBag)
                 cell.likeButton.rx.tap
-                    .bind {
-                        data.likeState.toggle()
-                        let likeButtonImage = data.likeState ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
-                        cell.likeButton.setImage(likeButtonImage, for: .normal)
-                    }
-                    .disposed(by: self.disposeBag)
-                cell.setUpCell(data: element)
+                    .map {row}
+                    .bind(to: cellLikeButtonTapped)
+                    .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)
-        self.textField.rx.text.orEmpty
-            .bind(with: self) { owner, value in
-                let result = value.isEmpty ? owner.data : owner.data.filter { $0.name.contains(value)}
-                print(result)
-                owner.list.accept(result)
-            }
-            .disposed(by: disposeBag)
-        
-        self.todoAddButton.rx.tap
-            .withLatestFrom(self.textField.rx.text.orEmpty )
-            .bind(with: self) { owner, value in
-                owner.data.insert(Todo(name: value, checkState: false, likeState: false), at: 0)
-                owner.list.accept(owner.data)
-            }
-            .disposed(by: disposeBag)
-        
+          
+//        self.textField.rx.text.orEmpty
+//            .bind(with: self) { owner, value in
+//                let result = value.isEmpty ? owner.data : owner.data.filter { $0.name.contains(value)}
+//                print(result)
+//                owner.list.accept(result)
+//            }
+//            .disposed(by: disposeBag)
     }
 }
 

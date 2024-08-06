@@ -8,7 +8,7 @@
 import Foundation
 
 struct Todo {
-    let name: String
+    var name: String
     var checkState: Bool
     var likeState: Bool
 }

@@ -17,7 +17,6 @@ final class TodoTableViewCell: BaseTableViewCell {
     }()
     let checkButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
         button.tintColor = .black
         return button
     }()
@@ -29,7 +28,6 @@ final class TodoTableViewCell: BaseTableViewCell {
     }()
     let likeButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "star"), for: .normal)
         button.tintColor = .black
         return button
     }()
@@ -66,10 +64,12 @@ final class TodoTableViewCell: BaseTableViewCell {
         }
     }
     func setUpCell(data: Todo) {
+
         todoNameLabel.text = data.name
         let checkImage = data.checkState ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square")
-        checkButton.setImage(checkImage, for: .normal)
+        checkButton.setImage (checkImage, for: .normal)
         let likeImage = data.likeState ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
         likeButton.setImage(likeImage, for: .normal)
     }
+    
 }

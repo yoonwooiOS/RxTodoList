@@ -15,14 +15,14 @@
 		99B83B502C5FD3C900E6805A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B83B4F2C5FD3C900E6805A /* BaseViewController.swift */; };
 		99B83B542C5FD43800E6805A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B83B532C5FD43800E6805A /* UIViewController+Extension.swift */; };
 		99B83B562C5FD4F700E6805A /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B83B552C5FD4F700E6805A /* BaseTableViewCell.swift */; };
-		99B83B592C5FD63300E6805A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 99B83B582C5FD63300E6805A /* SnapKit */; };
-		99B83B5C2C5FD64300E6805A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 99B83B5B2C5FD64300E6805A /* RxCocoa */; };
-		99B83B5E2C5FD64300E6805A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 99B83B5D2C5FD64300E6805A /* RxSwift */; };
 		99B83B602C5FD78200E6805A /* ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B83B5F2C5FD78200E6805A /* ReuseIdentifier.swift */; };
 		99B83B622C5FD79B00E6805A /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B83B612C5FD79B00E6805A /* TodoTableViewCell.swift */; };
 		99B83B652C5FD89F00E6805A /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B83B642C5FD89E00E6805A /* Todo.swift */; };
 		99B83B672C5FDAEC00E6805A /* TextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B83B662C5FDAEC00E6805A /* TextField+Extension.swift */; };
 		99B83B782C61007900E6805A /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B83B772C61007900E6805A /* TodoViewModel.swift */; };
+		99B83B7A2C61218C00E6805A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 99B83B792C61218C00E6805A /* SnapKit */; };
+		99B83B7C2C61219800E6805A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 99B83B7B2C61219800E6805A /* RxCocoa */; };
+		99B83B7E2C61219900E6805A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 99B83B7D2C61219900E6805A /* RxSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,9 +48,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99B83B5E2C5FD64300E6805A /* RxSwift in Frameworks */,
-				99B83B5C2C5FD64300E6805A /* RxCocoa in Frameworks */,
-				99B83B592C5FD63300E6805A /* SnapKit in Frameworks */,
+				99B83B7E2C61219900E6805A /* RxSwift in Frameworks */,
+				99B83B7C2C61219800E6805A /* RxCocoa in Frameworks */,
+				99B83B7A2C61218C00E6805A /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,9 +135,9 @@
 			);
 			name = RxTodoList;
 			packageProductDependencies = (
-				99B83B582C5FD63300E6805A /* SnapKit */,
-				99B83B5B2C5FD64300E6805A /* RxCocoa */,
-				99B83B5D2C5FD64300E6805A /* RxSwift */,
+				99B83B792C61218C00E6805A /* SnapKit */,
+				99B83B7B2C61219800E6805A /* RxCocoa */,
+				99B83B7D2C61219900E6805A /* RxSwift */,
 			);
 			productName = RxTodoList;
 			productReference = 99B83B382C5FD35700E6805A /* RxTodoList.app */;
@@ -451,17 +451,17 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		99B83B582C5FD63300E6805A /* SnapKit */ = {
+		99B83B792C61218C00E6805A /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 99B83B572C5FD63300E6805A /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		99B83B5B2C5FD64300E6805A /* RxCocoa */ = {
+		99B83B7B2C61219800E6805A /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 99B83B5A2C5FD64300E6805A /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
-		99B83B5D2C5FD64300E6805A /* RxSwift */ = {
+		99B83B7D2C61219900E6805A /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 99B83B5A2C5FD64300E6805A /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
