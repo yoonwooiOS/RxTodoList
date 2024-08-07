@@ -23,6 +23,12 @@
 		99B83B7A2C61218C00E6805A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 99B83B792C61218C00E6805A /* SnapKit */; };
 		99B83B7C2C61219800E6805A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 99B83B7B2C61219800E6805A /* RxCocoa */; };
 		99B83B7E2C61219900E6805A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 99B83B7D2C61219900E6805A /* RxSwift */; };
+		99C33EA32C634431001BCEA8 /* TodoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C33EA22C634431001BCEA8 /* TodoCollectionViewCell.swift */; };
+		99C33EA52C634450001BCEA8 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C33EA42C634450001BCEA8 /* BaseCollectionViewCell.swift */; };
+		99C33EA82C634962001BCEA8 /* BoxOfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C33EA72C634961001BCEA8 /* BoxOfficeViewController.swift */; };
+		99C33EAA2C634985001BCEA8 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C33EA92C634985001BCEA8 /* MovieCollectionViewCell.swift */; };
+		99C33EAC2C634991001BCEA8 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C33EAB2C634991001BCEA8 /* MovieTableViewCell.swift */; };
+		99C33EAE2C63499A001BCEA8 /* BoxOfficeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C33EAD2C63499A001BCEA8 /* BoxOfficeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +47,12 @@
 		99B83B642C5FD89E00E6805A /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		99B83B662C5FDAEC00E6805A /* TextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+Extension.swift"; sourceTree = "<group>"; };
 		99B83B772C61007900E6805A /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
+		99C33EA22C634431001BCEA8 /* TodoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCollectionViewCell.swift; sourceTree = "<group>"; };
+		99C33EA42C634450001BCEA8 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		99C33EA72C634961001BCEA8 /* BoxOfficeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeViewController.swift; sourceTree = "<group>"; };
+		99C33EA92C634985001BCEA8 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		99C33EAB2C634991001BCEA8 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		99C33EAD2C63499A001BCEA8 /* BoxOfficeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,14 +88,13 @@
 		99B83B3A2C5FD35700E6805A /* RxTodoList */ = {
 			isa = PBXGroup;
 			children = (
+				99C33EA62C634955001BCEA8 /* BoxOffice */,
+				99C33EA12C634410001BCEA8 /* View */,
 				99B83B632C5FD89400E6805A /* Model */,
 				99B83B522C5FD40000E6805A /* Extention */,
 				99B83B512C5FD3F900E6805A /* Base */,
 				99B83B3B2C5FD35700E6805A /* AppDelegate.swift */,
 				99B83B3D2C5FD35700E6805A /* SceneDelegate.swift */,
-				99B83B3F2C5FD35700E6805A /* TodoViewController.swift */,
-				99B83B772C61007900E6805A /* TodoViewModel.swift */,
-				99B83B612C5FD79B00E6805A /* TodoTableViewCell.swift */,
 				99B83B442C5FD35900E6805A /* Assets.xcassets */,
 				99B83B462C5FD35900E6805A /* LaunchScreen.storyboard */,
 				99B83B492C5FD35900E6805A /* Info.plist */,
@@ -96,6 +107,7 @@
 			children = (
 				99B83B4F2C5FD3C900E6805A /* BaseViewController.swift */,
 				99B83B552C5FD4F700E6805A /* BaseTableViewCell.swift */,
+				99C33EA42C634450001BCEA8 /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -116,6 +128,28 @@
 				99B83B642C5FD89E00E6805A /* Todo.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		99C33EA12C634410001BCEA8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				99B83B3F2C5FD35700E6805A /* TodoViewController.swift */,
+				99B83B772C61007900E6805A /* TodoViewModel.swift */,
+				99B83B612C5FD79B00E6805A /* TodoTableViewCell.swift */,
+				99C33EA22C634431001BCEA8 /* TodoCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		99C33EA62C634955001BCEA8 /* BoxOffice */ = {
+			isa = PBXGroup;
+			children = (
+				99C33EA72C634961001BCEA8 /* BoxOfficeViewController.swift */,
+				99C33EA92C634985001BCEA8 /* MovieCollectionViewCell.swift */,
+				99C33EAB2C634991001BCEA8 /* MovieTableViewCell.swift */,
+				99C33EAD2C63499A001BCEA8 /* BoxOfficeViewModel.swift */,
+			);
+			path = BoxOffice;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,13 +234,19 @@
 				99B83B402C5FD35700E6805A /* TodoViewController.swift in Sources */,
 				99B83B502C5FD3C900E6805A /* BaseViewController.swift in Sources */,
 				99B83B3C2C5FD35700E6805A /* AppDelegate.swift in Sources */,
+				99C33EAE2C63499A001BCEA8 /* BoxOfficeViewModel.swift in Sources */,
 				99B83B622C5FD79B00E6805A /* TodoTableViewCell.swift in Sources */,
+				99C33EA32C634431001BCEA8 /* TodoCollectionViewCell.swift in Sources */,
 				99B83B652C5FD89F00E6805A /* Todo.swift in Sources */,
+				99C33EAC2C634991001BCEA8 /* MovieTableViewCell.swift in Sources */,
 				99B83B542C5FD43800E6805A /* UIViewController+Extension.swift in Sources */,
 				99B83B562C5FD4F700E6805A /* BaseTableViewCell.swift in Sources */,
 				99B83B3E2C5FD35700E6805A /* SceneDelegate.swift in Sources */,
 				99B83B602C5FD78200E6805A /* ReuseIdentifier.swift in Sources */,
+				99C33EA82C634962001BCEA8 /* BoxOfficeViewController.swift in Sources */,
 				99B83B782C61007900E6805A /* TodoViewModel.swift in Sources */,
+				99C33EAA2C634985001BCEA8 /* MovieCollectionViewCell.swift in Sources */,
+				99C33EA52C634450001BCEA8 /* BaseCollectionViewCell.swift in Sources */,
 				99B83B672C5FDAEC00E6805A /* TextField+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

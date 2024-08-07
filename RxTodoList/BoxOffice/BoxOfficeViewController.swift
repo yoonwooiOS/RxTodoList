@@ -51,7 +51,7 @@ class BoxOfficeViewController: BaseViewController {
             .disposed(by: disposeBag)
        
         output.tableViewEvent
-            .subscribe(with: self) { owner, value in
+            .bind(with: self) { owner, value in
                 recentText.onNext(value)
             }
             .disposed(by: disposeBag)

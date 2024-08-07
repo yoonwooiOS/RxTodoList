@@ -38,12 +38,13 @@ final class TodoViewController: BaseViewController {
         view.separatorStyle = .none
         return view
     }()
-    var data: [Todo] = [
-        Todo(name: "그립톡 구매하기", checkState: true, likeState: true),
-        Todo(name: "사이다 구매하기", checkState: false, likeState: false),
-        Todo(name: "아이패드 케이스 최저가 알아보기", checkState: false, likeState: false)
-    ]
-    lazy var list = BehaviorRelay(value:data)
+    private let collectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout())
+        view.register(TodoCollectionViewCell.self, forCellWithReuseIdentifier: TodoCollectionViewCell.identifier)
+        //        view.backgroundColor = .brown
+        return view
+    }()
+    
     let viewModel = TodoViewModel()
     let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -53,6 +54,7 @@ final class TodoViewController: BaseViewController {
     override func setUpHierarchy() {
         view.addSubview(textField)
         view.addSubview(todoAddButton)
+        view.addSubview(collectionView)
         view.addSubview(tableView)
     }
     override func setUpLayout() {
@@ -64,8 +66,13 @@ final class TodoViewController: BaseViewController {
             make.top.trailing.bottom.equalTo(textField).inset(12)
             make.width.equalTo(60)
         }
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(textField.snp.bottom).offset(4)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(8)
+            make.height.equalTo(40)
+        }
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(textField.snp.bottom).offset(12)
+            make.top.equalTo(collectionView.snp.bottom).offset(12)
             make.bottom.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
         }
     }
@@ -73,17 +80,21 @@ final class TodoViewController: BaseViewController {
         navigationItem.title = "쇼핑"
     }
     private func bind() {
-        
+        let recommandScedule = PublishSubject<String>()
         let cellCheckButtonTapped = PublishRelay<Int>()
         let cellLikeButtonTapped = PublishRelay<Int>()
-        let input = TodoViewModel.Input( cellCheckButtonTapped: cellCheckButtonTapped, cellLikeButtonTapped: cellLikeButtonTapped, addTodo: self.todoAddButton.rx.tap
-            .withLatestFrom(self.textField.rx.text.orEmpty ))
+        let input = TodoViewModel.Input( 
+            collectionViewEvent: recommandScedule ,
+            recommandScedule: recommandScedule,
+            cellCheckButtonTapped: cellCheckButtonTapped,
+            cellLikeButtonTapped: cellLikeButtonTapped,
+            addTodo: self.todoAddButton.rx.tap.withLatestFrom(self.textField.rx.text.orEmpty))
         let output = viewModel.transform(input: input)
         
-        output.TodoList
+        output.todoList
             .bind(to: tableView.rx.items(cellIdentifier: TodoTableViewCell.identifier, cellType: TodoTableViewCell.self)) {
                 (row, element, cell ) in // let = row, let = element, let = cell -> 왜 let으로 선언되는지 알아보기
-                var data = element
+                let data = element
                 print(element,"2312312312312")
                 print(data,"!!!!!")
                 cell.setUpCell(data: data)
@@ -97,14 +108,35 @@ final class TodoViewController: BaseViewController {
                     .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)
-          
-//        self.textField.rx.text.orEmpty
-//            .bind(with: self) { owner, value in
-//                let result = value.isEmpty ? owner.data : owner.data.filter { $0.name.contains(value)}
-//                print(result)
-//                owner.list.accept(result)
-//            }
-//            .disposed(by: disposeBag)
+        
+        //        self.textField.rx.text.orEmpty
+        //            .bind(with: self) { owner, value in
+        //                let result = value.isEmpty ? owner.data : owner.data.filter { $0.name.contains(value)}
+        //                print(result)
+        //                owner.list.accept(result)
+        //            }
+        //            .disposed(by: disposeBag)
+        output.recommandList
+            .bind(to: collectionView.rx.items(cellIdentifier: TodoCollectionViewCell.identifier, cellType: TodoCollectionViewCell.self)) {
+                (row, element, cell) in
+                cell.todoLabel.text = element
+                print(element)
+                recommandScedule.onNext(element)
+            }
+            .disposed(by: disposeBag)
+        collectionView.rx.modelSelected(String.self)
+            .map {"\($0)"}
+            .subscribe(with: self) { owner, value in
+                print("collectionViewEvent\(value)")
+                recommandScedule.onNext(value)
+            }
+            .disposed(by: disposeBag)
+    }
+    static func layout() -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 120, height: 40)
+        layout.scrollDirection = .horizontal
+        return layout
     }
 }
 
