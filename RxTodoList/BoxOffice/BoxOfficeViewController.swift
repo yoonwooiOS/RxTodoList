@@ -32,6 +32,17 @@ class BoxOfficeViewController: BaseViewController {
         super.viewDidLoad()
         
         bind()
+//        NetworkManeger.shared.callBoxOffice(date: "20240401")
+//            .subscribe(with: self) { owner, value in
+//                dump(value)
+//            } onError: { owner, Error in
+//                print("통신에러~ \(Error)")
+//            } onCompleted: { owner in
+//                print("onCompleted")
+//            } onDisposed: { owner in
+//                print("onDisposed")
+//            }
+//            .disposed(by: disposeBag)
     }
     private func bind() {
         let recentText = PublishSubject<String>()
@@ -42,11 +53,13 @@ class BoxOfficeViewController: BaseViewController {
             .bind(to: collectionView.rx.items(cellIdentifier: MovieCollectionViewCell.identifier, cellType: MovieCollectionViewCell.self)) { (row, element, cell) in
                 cell.movieTextLabel.text = element
             }
-            .disposed(by: disposeBag)
+            .disposed(by: disposeBag).self
         output.movieList
             .bind(to: tableView.rx.items(cellIdentifier: MovieTableViewCell.identifier, cellType: MovieTableViewCell.self)) {
                 (row, element, cell) in
-                cell.todoNameLabel.text = element
+                dump(element.movieNm)
+                cell.todoNameLabel.text = element.movieNm
+                
             }
             .disposed(by: disposeBag)
        

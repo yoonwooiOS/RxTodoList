@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99320A8F2C64B7F500AF562B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99320A8E2C64B7F500AF562B /* Movie.swift */; };
+		99320A912C64BDE800AF562B /* NetworkManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99320A902C64BDE800AF562B /* NetworkManeger.swift */; };
+		99320A932C64BE6900AF562B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 99320A922C64BE6900AF562B /* .gitignore */; };
+		99320A972C64BE8B00AF562B /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99320A962C64BE8B00AF562B /* APIKey.swift */; };
 		99B83B3C2C5FD35700E6805A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B83B3B2C5FD35700E6805A /* AppDelegate.swift */; };
 		99B83B3E2C5FD35700E6805A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B83B3D2C5FD35700E6805A /* SceneDelegate.swift */; };
 		99B83B402C5FD35700E6805A /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B83B3F2C5FD35700E6805A /* TodoViewController.swift */; };
@@ -32,6 +36,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		99320A8E2C64B7F500AF562B /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		99320A902C64BDE800AF562B /* NetworkManeger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManeger.swift; sourceTree = "<group>"; };
+		99320A922C64BE6900AF562B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		99320A962C64BE8B00AF562B /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		99B83B382C5FD35700E6805A /* RxTodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxTodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99B83B3B2C5FD35700E6805A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99B83B3D2C5FD35700E6805A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +80,7 @@
 		99B83B2F2C5FD35700E6805A = {
 			isa = PBXGroup;
 			children = (
+				99320A922C64BE6900AF562B /* .gitignore */,
 				99B83B3A2C5FD35700E6805A /* RxTodoList */,
 				99B83B392C5FD35700E6805A /* Products */,
 			);
@@ -98,6 +107,7 @@
 				99B83B442C5FD35900E6805A /* Assets.xcassets */,
 				99B83B462C5FD35900E6805A /* LaunchScreen.storyboard */,
 				99B83B492C5FD35900E6805A /* Info.plist */,
+				99320A962C64BE8B00AF562B /* APIKey.swift */,
 			);
 			path = RxTodoList;
 			sourceTree = "<group>";
@@ -148,6 +158,8 @@
 				99C33EA92C634985001BCEA8 /* MovieCollectionViewCell.swift */,
 				99C33EAB2C634991001BCEA8 /* MovieTableViewCell.swift */,
 				99C33EAD2C63499A001BCEA8 /* BoxOfficeViewModel.swift */,
+				99320A8E2C64B7F500AF562B /* Movie.swift */,
+				99320A902C64BDE800AF562B /* NetworkManeger.swift */,
 			);
 			path = BoxOffice;
 			sourceTree = "<group>";
@@ -220,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99B83B452C5FD35900E6805A /* Assets.xcassets in Resources */,
+				99320A932C64BE6900AF562B /* .gitignore in Resources */,
 				99B83B482C5FD35900E6805A /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,9 +246,11 @@
 			files = (
 				99B83B402C5FD35700E6805A /* TodoViewController.swift in Sources */,
 				99B83B502C5FD3C900E6805A /* BaseViewController.swift in Sources */,
+				99320A8F2C64B7F500AF562B /* Movie.swift in Sources */,
 				99B83B3C2C5FD35700E6805A /* AppDelegate.swift in Sources */,
 				99C33EAE2C63499A001BCEA8 /* BoxOfficeViewModel.swift in Sources */,
 				99B83B622C5FD79B00E6805A /* TodoTableViewCell.swift in Sources */,
+				99320A912C64BDE800AF562B /* NetworkManeger.swift in Sources */,
 				99C33EA32C634431001BCEA8 /* TodoCollectionViewCell.swift in Sources */,
 				99B83B652C5FD89F00E6805A /* Todo.swift in Sources */,
 				99C33EAC2C634991001BCEA8 /* MovieTableViewCell.swift in Sources */,
@@ -243,6 +258,7 @@
 				99B83B562C5FD4F700E6805A /* BaseTableViewCell.swift in Sources */,
 				99B83B3E2C5FD35700E6805A /* SceneDelegate.swift in Sources */,
 				99B83B602C5FD78200E6805A /* ReuseIdentifier.swift in Sources */,
+				99320A972C64BE8B00AF562B /* APIKey.swift in Sources */,
 				99C33EA82C634962001BCEA8 /* BoxOfficeViewController.swift in Sources */,
 				99B83B782C61007900E6805A /* TodoViewModel.swift in Sources */,
 				99C33EAA2C634985001BCEA8 /* MovieCollectionViewCell.swift in Sources */,

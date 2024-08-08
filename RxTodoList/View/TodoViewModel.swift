@@ -53,12 +53,13 @@ final class TodoViewModel {
         input.addTodo
             .bind(with: self) { owner, text in
                 let data = Todo(name: text, checkState: false, likeState: false)
-                owner.data.insert(data, at: 0)
+                owner.data.insert(data, at: owner.data.endIndex)
                 list.onNext(owner.data)
             }
             .disposed(by: disposeBag)
          input.collectionViewEvent
             .bind(with: self) { owner, value in
+                
                 owner.data.append(Todo(name: value, checkState: false, likeState: false))
                 list.onNext(owner.data)
             }
