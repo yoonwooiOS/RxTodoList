@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import Alamofire
 
 enum APIError: Error {
     case invalidURL
@@ -17,7 +18,6 @@ enum APIError: Error {
 final class NetworkManeger {
     static let shared = NetworkManeger()
     private init() { }
-    
     func callBoxOffice(date: String) -> Observable<Movie> {
         let url = APIURL.url + "\(date)"
         let result = Observable<Movie>.create { observer in
@@ -25,7 +25,6 @@ final class NetworkManeger {
                 observer.onError(APIError.invalidURL)
                 return Disposables.create()
             }
-            
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let error = error {
                     observer.onError(APIError.unknownResponse)
@@ -49,7 +48,21 @@ final class NetworkManeger {
             }
             .debug("박스오피스 조회")
         return result
-        }
     }
-    
+    func fetchMovie(date: String) -> Single<Movie> {
+        return Single.create { observer -> Disposable in
+            let url = APIURL.url + "\(date)"
+            AF.request(url).validate(statusCode: 200..<300).responseDecodable(of: Movie.self) { response in
+                switch response.result {
+                case .success(let success):
+                    observer(.success(success))
+                case .failure(let failure):
+                    observer(.failure(failure))
+                }
+            }
+            return Disposables.create()
+        }.debug("Movie")
+    }
+}
+
 

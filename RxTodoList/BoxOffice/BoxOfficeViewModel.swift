@@ -52,7 +52,11 @@ class BoxOfficeViewModel {
             }
             .map { return "\($0)"}
             .flatMap { value in
-                NetworkManeger.shared.callBoxOffice(date: value)
+                NetworkManeger.shared.fetchMovie(date: value)
+                    .catch { error in
+                        let movie = Movie(boxOfficeResult: boxOfficeResult(dailyBoxOfficeList: []))
+                        return Single.just(movie)
+                    }
             }
             .subscribe(with: self) { owner, value in
                 dump(value)
